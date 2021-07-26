@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>  Trending </ion-title>
+      <ion-buttons right>
+        <button (click)="goback()">
+          <img src="../../assets/imgs/logout.png" style="width: 30px; height: 30px;">
+        </button>
+      </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher (ionRefresh)="doRefresh($event)" pulling-text="Pull to refresh" >
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list>
+    <ion-row *ngFor="let x of usersList;let i=index" style="align-items: center; border-bottom: 1px solid darkgray;">
+      <ion-item  (click)="toggleGroup(i)" [ngClass]="{active: isGroupShown(i)}">
+      <ion-row>
+        <ion-col col-2 style="padding:10px">
+          <ion-avatar>
+            <img [src]="x.avatar">
+          </ion-avatar>
+        </ion-col>
+        <ion-col col-10>
+          <h3 style="font-size: small; color: gray;">{{x.author}}</h3>
+          <p style="font-size: medium;  color: black;">{{x.name}}</p>
+
+          <!-- Expandable -->
+          <p *ngIf="isGroupShown(i)" style=" word-break: break-all; white-space: normal;">{{x.description}}</p>
+          <h3 *ngIf="isGroupShown(i)" style="color: gray;">           
+            <ion-icon name="radio-button-on" [style.color]="x.languageColor"></ion-icon> {{x.language}}
+            <img src="../../assets/imgs/star.png" class="icon">{{x.stars}} 
+            <img src="../../assets/imgs/fork.png"class="icon"> {{x.forks}}</h3>
+        </ion-col>
+      </ion-row>
+      </ion-item>
+  </ion-row>
+  </ion-list>
+
+  <!-- No Data Found  -->
+  <div *ngIf="error">
+    <img src="../../assets/imgs/nodata.png">
+    <div class="text-center">
+      <p class="no-data-font">NO DATA FOUND, KINDLY RETRY AFTER SOME TIME</p>
+    </div>
+  </div>
+
+  
+
+</ion-content>

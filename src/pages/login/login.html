@@ -1,0 +1,41 @@
+<!--
+  Generated template for the LoginPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>Login</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+  <ion-content padding>
+    <div [formGroup]="loginForm">
+      <ion-item>
+        <ion-label floating>Enter Username</ion-label>
+        <ion-input formControlName="userName"></ion-input>    
+      </ion-item>
+      <span color="danger" padding-left style="font-size: x-small; text-align: center;display: block; color: red;"
+      *ngIf="loginForm.controls['userName'].hasError('pattern') && (loginForm.controls['userName'].dirty || isFormInvalid)">
+         Alpha Numeric allowed*
+     </span>
+
+      <ion-item>
+        <ion-label floating>Enter Password </ion-label>
+        <ion-input formControlName="password"></ion-input>    
+      </ion-item>
+     
+        <span color="danger" padding-left style="font-size: x-small; text-align: center;display: block; color: red;"
+          *ngIf="loginForm.controls['password'].hasError('pattern') && (loginForm.controls['password'].dirty || isFormInvalid)">
+          Min 8 characters and should contains upper case, lower case, digit and special characters*
+      </span>
+
+      <button ion-button [disabled]="!loginForm.valid"  class="submitBtn" (click)='goHome()'>Submit</button>
+      <!-- <button ion-button class="submitBtn" (click)='goHome()'>Submit</button> -->
+
+    </div>
+  </ion-content>
+  
+
