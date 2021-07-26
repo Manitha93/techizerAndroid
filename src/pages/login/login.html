@@ -15,7 +15,7 @@
     <div [formGroup]="loginForm">
       <ion-item>
         <ion-label floating>Enter Username</ion-label>
-        <ion-input formControlName="userName"></ion-input>    
+        <ion-input formControlName="userName" disabled=false></ion-input>    
       </ion-item>
       <span color="danger" padding-left style="font-size: x-small; text-align: center;display: block; color: red;"
       *ngIf="loginForm.controls['userName'].hasError('pattern') && (loginForm.controls['userName'].dirty || isFormInvalid)">
@@ -24,7 +24,7 @@
 
       <ion-item>
         <ion-label floating>Enter Password </ion-label>
-        <ion-input formControlName="password"></ion-input>    
+        <ion-input formControlName="password" disabled=false></ion-input>    
       </ion-item>
      
         <span color="danger" padding-left style="font-size: x-small; text-align: center;display: block; color: red;"
